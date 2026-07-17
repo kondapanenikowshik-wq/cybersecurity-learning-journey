@@ -1,0 +1,6 @@
+pwd show my current loaction. +++====
+ls shows files and floders.
+mkdir creates new floder.=================
+cd enters a floder.
+touch creates an empty file.
+mv moves or renames a file.
