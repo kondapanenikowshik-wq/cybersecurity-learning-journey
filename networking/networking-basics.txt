@@ -1,0 +1,26 @@
+NETWORKING BASICS
+
+IP address:
+Identifies a device on a network.
+
+Private IP address:
+Used inside a home, school, or company network.
+Common ranges include 10.x.x.x, 172.16.x.x to 172.31.x.x, and 192.168.x.x.
+
+Public IP address:
+The address used to communicate across the internet.
+
+Router:
+Connects different networks and forwards traffic.
+
+DNS:
+Translates domain names such as google.com into IP addresses.
+
+Port:
+Identifies a specific network service on a device.
+
+Common ports:
+22  SSH
+53  DNS
+80  HTTP
+443 HTTPS
