@@ -1,0 +1,7 @@
+Jul 17 10:01:11 server sshd[1001]: Failed password for invalid user admin from 192.168.1.20 port 50001 ssh2
+Jul 17 10:02:15 server sshd[1002]: Accepted password for kowshik from 192.168.1.10 port 50002 ssh2
+Jul 17 10:03:22 server sshd[1003]: Failed password for root from 10.0.0.55 port 50003 ssh2
+Jul 17 10:04:10 server sshd[1004]: Failed password for invalid user test from 192.168.1.20 port 50004 ssh2
+Jul 17 10:05:07 server sshd[1005]: Accepted password for admin from 192.168.1.15 port 50005 ssh2
+Jul 17 10:06:43 server sshd[1006]: Failed password for root from 172.16.0.8 port 50006 ssh2
+Jul 17 10:07:12 server sshd[1007]: Failed password for root from 192.168.1.20 port 50007 ssh2

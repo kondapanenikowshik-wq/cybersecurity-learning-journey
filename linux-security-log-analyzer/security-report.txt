@@ -1,0 +1,17 @@
+Linux Security Log Analysis Report
+Generated on: Fri Jul 17 11:47:45 PM EDT 2026
+----------------------------------
+
+Total failed login attempts: 5
+
+Failed login entries:
+Jul 17 10:01:11 server sshd[1001]: Failed password for invalid user admin from 192.168.1.20 port 50001 ssh2
+Jul 17 10:03:22 server sshd[1003]: Failed password for root from 10.0.0.55 port 50003 ssh2
+Jul 17 10:04:10 server sshd[1004]: Failed password for invalid user test from 192.168.1.20 port 50004 ssh2
+Jul 17 10:06:43 server sshd[1006]: Failed password for root from 172.16.0.8 port 50006 ssh2
+Jul 17 10:07:12 server sshd[1007]: Failed password for root from 192.168.1.20 port 50007 ssh2
+
+Suspicious IP addresses:
+      3 192.168.1.20
+      1 172.16.0.8
+      1 10.0.0.55
