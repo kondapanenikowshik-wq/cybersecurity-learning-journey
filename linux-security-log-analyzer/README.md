@@ -31,3 +31,14 @@ The script uses Linux command-line tools including:
 chmod +x analyze-log.sh
 ./analyze-log.sh
 cat security-report.txt
+
+## Interview Explanation
+
+This project analyzes a simulated linux SSH authentication log.
+
+The bash script searches for failed password attempts, counts the total number
+
+The main finding was that '192.168.1.20' generated three failed login attempt
+
+The project helped me practice Linux, Bash scripiting, log analusis, Git, and 
+Github
