@@ -1,0 +1,63 @@
+Network Traffic and Port Analysis Report
+Generated on: Sun Jul 19 09:03:46 PM EDT 2026
+========================================
+
+=== NETWORK INTERFACE ===
+2: enp0s1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 9e:3b:81:f6:80:b2 brd ff:ff:ff:ff:ff:ff
+    altname enx9e3b81f680b2
+    inet 192.168.64.2/24 brd 192.168.64.255 scope global dynamic noprefixroute enp0s1
+       valid_lft 3437sec preferred_lft 3437sec
+    inet6 fd5a:88c5:e74e:1539:9c3b:81ff:fef6:80b2/64 scope global dynamic noprefixroute 
+       valid_lft 2591925sec preferred_lft 604725sec
+    inet6 fe80::9c3b:81ff:fef6:80b2/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+
+=== ROUTING TABLE ===
+default via 192.168.64.1 dev enp0s1 proto dhcp src 192.168.64.2 metric 100 
+192.168.64.0/24 dev enp0s1 proto kernel scope link src 192.168.64.2 metric 100 
+
+=== LISTENING TCP AND UDP PORTS ===
+Netid State  Recv-Q Send-Q                      Local Address:Port Peer Address:Port
+udp   UNCONN 0      0                                 0.0.0.0:5353      0.0.0.0:*   
+udp   UNCONN 0      0                              127.0.0.54:53        0.0.0.0:*   
+udp   UNCONN 0      0                           127.0.0.53%lo:53        0.0.0.0:*   
+udp   UNCONN 0      0                               127.0.0.1:323       0.0.0.0:*   
+udp   UNCONN 0      0                                    [::]:5353         [::]:*   
+udp   UNCONN 0      0                                   [::1]:323          [::]:*   
+udp   UNCONN 0      0      [fe80::9c3b:81ff:fef6:80b2]%enp0s1:546          [::]:*   
+tcp   LISTEN 0      4096                        127.0.0.53%lo:53        0.0.0.0:*   
+tcp   LISTEN 0      4096                            127.0.0.1:631       0.0.0.0:*   
+tcp   LISTEN 0      4096                           127.0.0.54:53        0.0.0.0:*   
+tcp   LISTEN 0      4096                                [::1]:631          [::]:*   
+
+=== DNS RESOLUTION TEST ===
+2606:4700:10::ac42:93f3 example.com
+2606:4700:10::6814:179a example.com
+
+=== HTTPS CONNECTIVITY TEST ===
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0
+HTTP/2 200 
+date: Mon, 20 Jul 2026 01:03:46 GMT
+content-type: text/html
+server: cloudflare
+last-modified: Wed, 15 Jul 2026 18:48:48 GMT
+allow: GET, HEAD
+accept-ranges: bytes
+age: 5156
+cf-cache-status: HIT
+cf-ray: a1de0c49aa62af8c-IAD
+
+
+=== LOCALHOST NMAP SCAN ===
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-07-19 21:03 -0400
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000024s latency).
+Other addresses for localhost (not scanned): ::1
+Not shown: 999 closed tcp ports (conn-refused)
+PORT    STATE SERVICE
+631/tcp open  ipp
+
+Nmap done: 1 IP address (1 host up) scanned in 0.01 seconds

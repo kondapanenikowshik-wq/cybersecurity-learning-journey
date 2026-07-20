@@ -1,0 +1,82 @@
+NETWORK TRAFFIC AND PORT ANALYSIS — SECURITY FINDINGS
+
+1. Scope
+
+This assessment was performed only against my own Ubuntu virtual machine
+and localhost. No external or unauthorized systems were scanned.
+
+2. Network Configuration
+
+Private IP Address: 192.168.64.2
+Gateway: 192.168.64.1
+Network Interface: enp0s1
+
+The virtual machine uses a private IPv4 address and communicates with
+external networks through the virtual gateway.
+
+3. DNS and Connectivity
+
+DNS resolution status: Successful
+HTTPS connectivity status: Successful
+
+The system successfully resolved example.com to IP addresses.
+An HTTPS request returned HTTP/2 200, confirming that DNS resolution,
+internet connectivity, and HTTPS communication were functioning.
+
+4. Listening Services
+
+TCP ports discovered:
+- TCP port 53 — local DNS resolver
+- TCP port 631 — Internet Printing Protocol/CUPS
+
+UDP ports discovered:
+- UDP port 53 — local DNS resolver
+- UDP port 323 — Chrony time synchronization
+- UDP port 5353 — multicast DNS/Avahi
+- UDP port 546 — DHCPv6 client
+
+Associated services:
+- systemd-resolved
+- CUPS
+- chronyd
+- avahi-daemon
+- NetworkManager
+
+5. Nmap Findings
+
+Open ports:
+- 631/tcp
+
+Detected services:
+- Internet Printing Protocol
+- CUPS 2.4
+
+Unexpected services:
+- No clearly unexpected remotely exposed TCP services were identified.
+
+The CUPS printing service was bound to localhost addresses 127.0.0.1
+and ::1. This limits direct access to the local machine and reduces
+network exposure.
+
+6. Security Observations
+
+- Only one open TCP port was discovered during the localhost scan.
+- Port 631 was associated with the CUPS printing service.
+- CUPS appeared to be limited to loopback interfaces rather than all
+  network interfaces.
+- Local DNS and time-synchronization services were operating normally.
+- Multicast DNS was enabled through Avahi.
+- Services that are not required should be disabled to reduce attack surface.
+- Installed services should be kept updated and securely configured.
+- Firewall rules should restrict unnecessary inbound access.
+
+7. Conclusion
+
+The Ubuntu virtual machine had a limited localhost attack surface.
+DNS resolution and HTTPS connectivity worked successfully. The only
+open TCP port identified by Nmap was port 631, running CUPS 2.4 for
+local printing. No unexpected remotely exposed TCP services were found.
+
+This lab demonstrated how Linux tools including ip, ss, curl, getent,
+and Nmap can be used to inspect network interfaces, routing, DNS,
+listening ports, active processes, and local service exposure.

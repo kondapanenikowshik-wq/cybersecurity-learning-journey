@@ -1,0 +1,92 @@
+NETWORK TRAFFIC AND PPORT ANALYSIS LAB
+
+This project examines network interfaces, routing, DNS resolution, listening
+services, and local ports on an ubuntu virtual machine.
+
+The testing scope is limited to my own ubuntu VM and localhost.
+=== NETWORK INTERFACES === ip address
+
+default via 192.168.64.1 dev enp0s1 proto dhcp src 192.168.64.2 metric 100 
+192.168.64.0/24 dev enp0s1 proto kernel scope link src 192.168.64.2 metric 100 
+
+=== LISTENING TCP AND UDP PORTS ===
+Netid State  Recv-Q Send-Q                      Local Address:Port Peer Address:Port
+udp   UNCONN 0      0                                 0.0.0.0:5353      0.0.0.0:*   
+udp   UNCONN 0      0                              127.0.0.54:53        0.0.0.0:*   
+udp   UNCONN 0      0                           127.0.0.53%lo:53        0.0.0.0:*   
+udp   UNCONN 0      0                               127.0.0.1:323       0.0.0.0:*   
+udp   UNCONN 0      0                                    [::]:5353         [::]:*   
+udp   UNCONN 0      0                                   [::1]:323          [::]:*   
+udp   UNCONN 0      0      [fe80::9c3b:81ff:fef6:80b2]%enp0s1:546          [::]:*   
+tcp   LISTEN 0      4096                        127.0.0.53%lo:53        0.0.0.0:*   
+tcp   LISTEN 0      4096                            127.0.0.1:631       0.0.0.0:*   
+tcp   LISTEN 0      4096                           127.0.0.54:53        0.0.0.0:*   
+tcp   LISTEN 0      4096                                [::1]:631          [::]:*   
+
+=== LISTENING PORTS WITH PROCESSES ===
+Netid State  Recv-Q Send-Q                      Local Address:Port Peer Address:PortProcess                                   
+udp   UNCONN 0      0                                 0.0.0.0:5353      0.0.0.0:*    users:(("avahi-daemon",pid=1189,fd=12))  
+udp   UNCONN 0      0                              127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=654,fd=18))
+udp   UNCONN 0      0                           127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=654,fd=16))
+udp   UNCONN 0      0                               127.0.0.1:323       0.0.0.0:*    users:(("chronyd",pid=1275,fd=4))        
+udp   UNCONN 0      0                                    [::]:5353         [::]:*    users:(("avahi-daemon",pid=1189,fd=13))  
+udp   UNCONN 0      0                                   [::1]:323          [::]:*    users:(("chronyd",pid=1275,fd=5))        
+udp   UNCONN 0      0      [fe80::9c3b:81ff:fef6:80b2]%enp0s1:546          [::]:*    users:(("NetworkManager",pid=1286,fd=28))
+tcp   LISTEN 0      4096                        127.0.0.53%lo:53        0.0.0.0:*    users:(("systemd-resolve",pid=654,fd=17))
+tcp   LISTEN 0      4096                            127.0.0.1:631       0.0.0.0:*    users:(("cupsd",pid=1352,fd=7))          
+tcp   LISTEN 0      4096                           127.0.0.54:53        0.0.0.0:*    users:(("systemd-resolve",pid=654,fd=19))
+tcp   LISTEN 0      4096                                [::1]:631          [::]:*    users:(("cupsd",pid=1352,fd=6))          
+
+=== DNS RESOLUTION ===
+2606:4700:10::6814:179a example.com
+2606:4700:10::ac42:93f3 example.com
+
+=== HTTP RESPONSE HEADERS ===
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0  0      0   0      0   0      0      0      0                              0
+HTTP/2 200 
+date: Mon, 20 Jul 2026 00:47:36 GMT
+content-type: text/html
+server: cloudflare
+last-modified: Wed, 15 Jul 2026 18:48:48 GMT
+allow: GET, HEAD
+accept-ranges: bytes
+age: 4186
+cf-cache-status: HIT
+cf-ray: a1ddf49e6b50d46b-IAD
+
+
+=== LOCALHOST NMAP SCAN ===
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-07-19 20:48 -0400
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000036s latency).
+Other addresses for localhost (not scanned): ::1
+Not shown: 999 closed tcp ports (conn-refused)
+PORT    STATE SERVICE
+631/tcp open  ipp
+
+Nmap done: 1 IP address (1 host up) scanned in 0.03 seconds
+
+=== LOCALHOST SERVICE VERSION SCAN ===
+Starting Nmap 7.98 ( https://nmap.org ) at 2026-07-19 20:49 -0400
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00s latency).
+Other addresses for localhost (not scanned): ::1
+Not shown: 999 closed tcp ports (reset)
+PORT    STATE SERVICE VERSION
+631/tcp open  ipp     CUPS 2.4
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 6.14 seconds
+
+=== DETAILED NETWORK INTERFACE INFORMATION ===
+2: enp0s1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 9e:3b:81:f6:80:b2 brd ff:ff:ff:ff:ff:ff
+    altname enx9e3b81f680b2
+    inet 192.168.64.2/24 brd 192.168.64.255 scope global dynamic noprefixroute enp0s1
+       valid_lft 2185sec preferred_lft 2185sec
+    inet6 fd5a:88c5:e74e:1539:9c3b:81ff:fef6:80b2/64 scope global dynamic noprefixroute 
+       valid_lft 2591899sec preferred_lft 604699sec
+    inet6 fe80::9c3b:81ff:fef6:80b2/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
